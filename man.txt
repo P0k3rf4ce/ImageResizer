@@ -1,0 +1,28 @@
+If width, height, and scale are provided, only width and height will be used.
+If scale and exactly one of width or height are provided, the provided width/height will be used, 
+and the other dimension will be scaled by the provided scale.
+If scale is provided and neither width or height are provided, then both dimensions will be scaled by the provided scale.
+Otherwise, if scale is not provided, the width and height provided will be used. If either width or height is not provided,
+the PNG's current width or height will be used.
+
+If neither scale, width, or height are provided, the resulting image will have the same dimensions. 
+One can use this to convert a specific type of a PNG file.
+
+OPTIONS
+    -a, --preserve-aspect-ratio
+        Resize while preserving original aspect ratio. Extra space will be filled with 0 pixels
+
+    -h <height>, --height=<height>
+        Specify the height of the resulting image
+
+    --help
+        Display available options
+
+    -o dest_file
+        Specify the destination of the resized image
+    
+    -s <scale>, --scale=<scale>
+        Stretch the image by scaling each dimension of the original by <scale>
+
+    -w <width>, --width=<width>
+        Specify the width of the resulting image

@@ -1,0 +1,75 @@
+.TH RESIZE 1 "January 2024" "Version 1.0" "Resize Manual"
+
+.SH NAME
+resize \- Resize PNG images from the command line
+
+.SH SYNOPSIS
+.B resize
+[\fIoptions\fR] \fIsrc_file\fR
+
+.SH DESCRIPTION
+The \fBresize\fR command allows you to resize images from the command line. The following optional parameters can be used to control the resulting image:
+
+.SH OPTIONS
+.TP
+.BR \-w, \-\-width=\fIWIDTH\fR
+Set the width of the resized image.
+
+.TP
+.BR \-h, \-\-height=\fIHEIGHT\fR
+Set the height of the resized image.
+
+.TP
+.BR \-s, \-\-scale=\fISCALE\fR
+Set the scale factor of the resized image.
+
+.TP
+.BR \-o \fIdest_file\fR
+Specify the output file for the resized image.
+
+.TP
+.BR \-\-help
+Display help message and usage information.
+
+.PP
+The \fBresizer\fR command processes images according to the specified options.
+
+.PP
+If scale is not provided, the resized image will have the dimensions provided. If one of the dimensions is not provided, it will be replaced with the corresponding dimension of the original image.
+
+.PP
+If the scale is provided, and both width and height are provided, then the scale value is ignored. 
+
+.PP
+If the scale is provided, and neither width or height are provided, the resulting image will have its dimensions scaled by the scale factor provided.
+
+.PP
+If the scale is provided, and only one of width or height is provided, the resulting image will have the provided dimension, while the other dimension will be scaled by the scale factor provided.
+
+.PP
+If neither scale, width, or height are provided, the resulting image will have the same dimensions. One can use this to convert PNG files to the same type. More specifically, these files will use bit depth of 8, RGBA color type, no interlacing, and default compression and filter.
+
+.PP
+The resulting image is saved to the specified output file using the \fB\-o\fR option. If the output file is not specified, the resized image is saved with a default filename "a.png".
+
+.SH EXAMPLES
+Resize an image to a specific width and height:
+.RS
+.B resizer -w 800 --height=600 -ooutput.png input.png
+.RE
+
+Scale image to half both dimensions and save to default filename "a.png":
+.RS
+.B resizer -s0.5 input.png
+.RE
+
+Resize with width 1000 and height doubled:
+.RS
+.B resizer --width 1000 -s2 -o output.png input.png
+.RE
+
+.SH AUTHOR
+Written by Tymofiy Sompura.
+
+.SH SEE ALSO
+Libpng library \- https://libpng.sourceforge.io/
